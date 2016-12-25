@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -27,7 +28,7 @@ public class MyTicketSale extends JFrame implements Runnable // 主程序开端
     JTextField tRemain;
     JTextField tTotal;
     JTextField tSold;
-    int remain = 200;
+    int remain = 100;
     int sold = 0;
     int total = 0;
     JButton mybutton;
@@ -55,59 +56,58 @@ public class MyTicketSale extends JFrame implements Runnable // 主程序开端
         initPanels();
         initTextFields();
 
-//		setFont(new Font("TimesRoman", Font.BOLD, 10));
-//		textField1 = new JTextField();
-//		textField2 = new JTextField();
-//		//TODO PANEL RIGHT add(textField1);
-//		//TODO PANEL RIGHT add(textField2);
-//		textField1.setFont(new Font("TimesRoman", Font.BOLD, 15));
-//		textField2.setFont(new Font("TimesRoman", Font.BOLD, 15));
-//		pp = new Clock1(textField1, textField2); // 日期和时钟
+     JTextField	TextField1=new JTextField();
+     JTextField TextField2=new JTextField();
+        add(TextField1);
+        add(TextField2);
+        TextField1.setFont(new Font("TimesRoman",Font.BOLD,15));
+       TextField2.setFont(new Font("TimesRoman",Font.BOLD,15));
+        TextField1.setBounds(600,10,150,30);
+        TextField2.setBounds(600,60,150,30);
+        pp=new Clock1(TextField1,TextField2);  
+        panel_left_up_up.add(TextField1);
+        panel_left_up_up.add(TextField2);
 
         tRemain = new JTextField(Integer.toString(remain) + "张", 10);
         tRemain.setEditable(false);
         add(tRemain);
         tRemain.setFont(new Font("TimesRoman", Font.BOLD, 15));
-        tRemain.reshape(400, 160, 80, 20);
+        tRemain.setBounds(400, 160, 80, 20);
         tSold = new JTextField(Integer.toString(sold) + "张", 10);
         tSold.setEditable(false);
         tSold.setFont(new Font("TimesRoman", Font.BOLD, 15));
         add(tSold);
-        tSold.reshape(100, 160, 80, 20);
+        tSold.setBounds(100, 160, 80, 20);
         tTotal = new JTextField(Integer.toString(total) + "元", 10);
         tTotal.setEditable(false);
         add(tTotal);
         tTotal.setFont(new Font("TimesRoman", Font.BOLD, 15));
-        tTotal.reshape(640, 160, 80, 30);
+        tTotal.setBounds(640, 160, 80, 30);
         m_Graphics = getGraphics();
 
-
-        TextField myTextField2 = new TextField("《少年》");
-        myTextField2.setForeground(Color.blue);
-        myTextField2.setFont(new Font("TimesRoman", Font.BOLD, 30));
-        add(myTextField2);
-        myTextField2.reshape(300, 60, 150, 40);
-        TextField myTextField3 = new TextField("售出票:");
-        myTextField3.setFont(new Font("TimesRoman", Font.BOLD, 15));
-        add(myTextField3);
-        myTextField3.reshape(10, 160, 80, 20);
-        TextField myTextField4 = new TextField("剩余票:");
-        myTextField4.setFont(new Font("TimesRoman", Font.BOLD, 15));
-        add(myTextField4);
-        myTextField4.reshape(300, 160, 80, 20);
+       
+        TextField myTextField4=new TextField("剩余票:");
+        myTextField4.setFont(new Font("TimesRoman",Font.BOLD,15));
+         add(myTextField4);
+         myTextField4.setBounds(300,160,80,20);
+        TextField myTextField3=new TextField("售出票:");
+        myTextField3.setFont(new Font("TimesRoman",Font.BOLD,15)); 
+         add(myTextField3);
+         myTextField3.setBounds(10,160,80,20); 
         TextField myTextField5 = new TextField("总金额:");
         myTextField5.setFont(new Font("TimesRoman", Font.BOLD, 15));
         add(myTextField5);
-        myTextField5.reshape(550, 160, 80, 20);
+        myTextField5.setBounds(550, 160, 80, 20);
 
         TextField myTextField6 = new TextField(
                 "票价：1--3排 10元；4--6排 5元；7--10排 2元");
         myTextField6.setForeground(Color.blue);
         myTextField6.setFont(new Font("TimesRoman", Font.BOLD, 15));
         add(myTextField6);
-        myTextField6.reshape(5, 195, 500, 20);
+        myTextField6.setBounds(5, 195, 500, 20);
 
-        this.setBounds(new Rectangle(0, 0, 1024, 600));
+        this.setBounds(new Rectangle(0, 0, 1600, 800));
+        this.setBackground(Color.orange);
         this.setLayout(null);
         this.getContentPane().add(panel_left);
         this.getContentPane().add(panel_right);
@@ -119,59 +119,81 @@ public class MyTicketSale extends JFrame implements Runnable // 主程序开端
     private void initTextFields() {
         JTextField latestMovieTextField = new JTextField();
         latestMovieTextField.setText("最新电影：");
+        latestMovieTextField.setBounds(300, 10, 150, 30);
+        latestMovieTextField.setFont(new Font("TimeRome",Font.BOLD,20));
         latestMovieTextField.setForeground(Color.RED);
         panel_left_up_up.add(latestMovieTextField);
+        
+        JTextField NameTextField = new JTextField();
+        NameTextField.setText("《少年》");
+        NameTextField.setBounds(300,60,150,40);
+        NameTextField.setFont(new Font("TimesRoman",Font.BOLD,30));
+        NameTextField.setForeground(Color.BLUE);
+        panel_left_up_up.add(NameTextField);
+        
+        //JTextField SoldTextField = new JTextField();
+        //SoldTextField.setText("售出票：");
+       // SoldTextField.setBounds(10, 160, 80, 20);
+        //SoldTextField.setFont(new Font("TimesRoman",Font.BOLD,15));
+       // panel_left_middle_up.add(SoldTextField);
+        
     }
 
     private void initPanels() {
         panel_left = new JPanel();
         panel_right = new JPanel();
-        panel_left.setBounds(new Rectangle(0, 0, 1024, 600));
+        panel_left.setBounds(new Rectangle(0, 0, 800, 600));
+        panel_right.setBounds(new Rectangle(0, 0, 800, 600));
 
-        panel_left.setLayout(new GridLayout(3, 1));
+        panel_left.setLayout(new GridLayout(2, 1));
         panel_right.setLayout(new GridLayout(1, 1));
 
         panel_left_up = new JPanel();
         panel_left_up.setLayout(new GridLayout(2, 1));
-        panel_left_middle = new JPanel();
-        panel_left_middle.setLayout(new GridLayout(2, 1));
+        //panel_left_middle = new JPanel();
+        //panel_left_middle.setLayout(new GridLayout(2, 1));
         panel_left_down = new JPanel();
         panel_left_down.setLayout(new GridLayout(1, 1));
         panel_left_down.add(createButtonPanel());
-        panelAdd(panel_left, panel_left_up, panel_left_middle, panel_left_down);
+        //panel_left_down.setBounds(0, , 1000, 2000);
+        panelAdd(panel_left, panel_left_up, panel_left_down);
 
 
         panel_left_up_up = new JPanel();
-        panel_left_up_up.setLayout(new GridLayout(1, 1));
+        panel_left_up_up.setLayout(null);
         panel_left_up_down = new JPanel();
-        panel_left_up_down.setLayout(new GridLayout(1, 1));
+        panel_left_up_down.setLayout(null);
         panelAdd(panel_left_up, panel_left_up_up, panel_left_up_down);
 
-        panel_left_middle_up = new JPanel();
-        panel_left_middle_up.setLayout(new GridLayout(1, 3));
-        panel_left_middle_down = new JPanel();
-        panel_left_middle_down.setLayout(new GridLayout(1, 1));
-        panelAdd(panel_left_middle, panel_left_middle_up, panel_left_middle_down);
+        //panel_left_middle_up = new JPanel();
+       //panel_left_middle_up.setLayout(null);
+        //panel_left_middle_down = new JPanel();
+       // panel_left_middle_down.setLayout(new GridLayout(1, 1));
+        //panelAdd(panel_left_middle, panel_left_middle_up, panel_left_middle_down);
     }
 
     private void panelAdd(JPanel panel, Component... component) {
         for (Component component1 : component) {
             panel.add(component1);
-        }
+        } 
     }
 
     public JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(10, 20));
+        buttonPanel.setLayout(new GridLayout(10, 10));
         for (int i = 1; i <= 10; i++) {
-            for (int j = 1; j <= 20; j++) {
+            for (int j = 1; j <= 10; j++) {
                 JButton myButton = new JButton(i + "排" + j + "列");
                 myButton.addActionListener(buttonActionHandler);
                 buttonPanel.add(myButton);
+                Dimension preferredSize = new Dimension(300,100);
+               buttonPanel.setPreferredSize(preferredSize );
+                
+
             }
         }
         return buttonPanel;
-    }
+    }                     
 
     public void destroy() {
         pp.stop();
